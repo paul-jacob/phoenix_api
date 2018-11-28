@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phx-deployment
+  labels:
+    app: phx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: phx
+  template:
+    metadata:
+      labels:
+        app: phx
+    spec:
+      containers:
+      - name: phx-server
+        image: phx:1.0.0
+        ports:
+        - containerPort: 80
